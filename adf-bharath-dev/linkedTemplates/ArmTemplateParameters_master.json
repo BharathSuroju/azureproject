@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-bharath-dev"
+		},
+		"LS_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_AzureSQL_password": {
+			"value": ""
+		},
+		"LS_ADLS_properties_typeProperties_url": {
+			"value": "https://bronzesur.dfs.core.windows.net/"
+		},
+		"LS_AzureSQL_properties_typeProperties_server": {
+			"value": "spotify-sql-server-bharath.database.windows.net"
+		},
+		"LS_AzureSQL_properties_typeProperties_database": {
+			"value": "free-sql-db-9408808"
+		},
+		"LS_AzureSQL_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
