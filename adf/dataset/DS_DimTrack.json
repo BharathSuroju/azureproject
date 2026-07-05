@@ -1,0 +1,50 @@
+{
+	"name": "DS_DimTrack",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "track_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "track_name",
+				"type": "varchar"
+			},
+			{
+				"name": "artist_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "album_name",
+				"type": "varchar"
+			},
+			{
+				"name": "duration_sec",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "release_date",
+				"type": "date"
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DimTrack"
+		}
+	}
+}
