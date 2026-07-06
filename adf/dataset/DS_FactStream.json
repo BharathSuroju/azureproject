@@ -1,0 +1,52 @@
+{
+	"name": "DS_FactStream",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "stream_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "user_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "track_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "date_key",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "listen_duration",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "device_type",
+				"type": "varchar"
+			},
+			{
+				"name": "stream_timestamp",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "FactStream"
+		}
+	}
+}
