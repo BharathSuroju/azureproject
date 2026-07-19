@@ -116,7 +116,14 @@
 			{
 				"name": "Max_CDC",
 				"type": "Script",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "AzureSQLToLake",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -133,7 +140,10 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "SELECT MAX(updated_at) AS CDC\nFROM dbo.DimUser"
+							"text": {
+								"value": "select max(@{pipeline().parameters.cdccolumn}) as CDC from @{pipeline().parameters.schema}.@{pipeline().parameters.tablename}",
+								"type": "Expression"
+							}
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -161,9 +171,9 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "AzureSQLToLake",
+						"activity": "Max_CDC",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -182,7 +192,7 @@
 							{
 								"name": "CDC",
 								"value": {
-									"value": "ESDFA",
+									"value": "@activity('Max_CDC').output.resultSets[0].rows[0].CDC",
 									"type": "Expression"
 								}
 							}
