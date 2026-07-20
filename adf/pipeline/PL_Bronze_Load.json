@@ -68,7 +68,10 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "bronze",
-							"folder": "DimUser_CDC",
+							"folder": {
+								"value": "@pipeline().parameters.tablename",
+								"type": "Expression"
+							},
 							"file": {
 								"value": "@concat(pipeline().parameters.tablename,'_',variables('current'))",
 								"type": "Expression"
@@ -106,7 +109,10 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "bronze",
-							"folder": "DimUser_CDC",
+							"folder": {
+								"value": "concat(@{pipeline().parameters.tablename}, \"_CDC\")",
+								"type": "Expression"
+							},
 							"filename": "cdc.json"
 						}
 					},
