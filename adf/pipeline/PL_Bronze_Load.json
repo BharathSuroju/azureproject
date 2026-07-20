@@ -190,7 +190,7 @@
 					],
 					"ifTrueActivities": [
 						{
-							"name": "Max_CDC_copy1",
+							"name": "Max_CDC",
 							"type": "Script",
 							"dependsOn": [],
 							"policy": {
@@ -223,7 +223,7 @@
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "Max_CDC_copy1",
+									"activity": "Max_CDC",
 									"dependencyConditions": [
 										"Succeeded"
 									]
