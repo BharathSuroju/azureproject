@@ -110,7 +110,7 @@
 						"parameters": {
 							"container": "bronze",
 							"folder": {
-								"value": "concat(@{pipeline().parameters.tablename}, \"_CDC\")",
+								"value": "@concat(pipeline().parameters.tablename, '_CDC')",
 								"type": "Expression"
 							},
 							"filename": "cdc.json"
