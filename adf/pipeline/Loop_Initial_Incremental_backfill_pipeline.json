@@ -276,7 +276,7 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@concat(pipeline().parameters.tablename, '_CDC')",
+											"value": "@{item().table}_CDC",
 											"type": "Expression"
 										},
 										"filename": "cdc.json"
@@ -307,17 +307,8 @@
 			}
 		],
 		"parameters": {
-			"schema": {
-				"type": "string"
-			},
-			"tablename": {
-				"type": "string"
-			},
-			"cdccolumn": {
-				"type": "string"
-			},
-			"from_date": {
-				"type": "string"
+			"loop": {
+				"type": "array"
 			}
 		},
 		"variables": {
