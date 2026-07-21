@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.loop",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "checkrowscopied",
@@ -49,7 +53,10 @@
 														"value": "@item().tablename",
 														"type": "Expression"
 													},
-													"file": "@concat(pipeline().parameters.tablename,'_',variables('current'))"
+													"file": {
+														"value": "@concat(item().tablename,variables('current'))",
+														"type": "Expression"
+													}
 												}
 											},
 											"enableLogging": false,
@@ -276,7 +283,7 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@{item().table}_CDC",
+											"value": "@{item().tablename}_CDC",
 											"type": "Expression"
 										},
 										"filename": "cdc.json"
@@ -308,7 +315,39 @@
 		],
 		"parameters": {
 			"loop": {
-				"type": "array"
+				"type": "array",
+				"defaultValue": [
+					{
+						"schema": "dbo",
+						"tablename": "DimUser",
+						"cdccolumn": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"tablename": "DimTrack",
+						"cdccolumn": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"tablename": "DimDate",
+						"cdccolumn": "date",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"tablename": "DimArtist",
+						"cdccolumn": "updated_at",
+						"from_date": ""
+					},
+					{
+						"schema": "dbo",
+						"tablename": "FactStream",
+						"cdccolumn": "stream_timestamp",
+						"from_date": ""
+					}
+				]
 			}
 		},
 		"variables": {
