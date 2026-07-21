@@ -46,7 +46,7 @@
 												"parameters": {
 													"container": "bronze",
 													"folder": {
-														"value": "@pipeline().parameters.tablename",
+														"value": "@item().tablename",
 														"type": "Expression"
 													},
 													"file": "@concat(pipeline().parameters.tablename,'_',variables('current'))"
@@ -83,7 +83,7 @@
 												{
 													"type": "Query",
 													"text": {
-														"value": "select max(@{pipeline().parameters.cdccolumn}) as CDC from @{pipeline().parameters.schema}.@{pipeline().parameters.tablename}",
+														"value": "select max(@{item().cdccolumn}) as CDC from @{item().schema}.@{item().tablename}",
 														"type": "Expression"
 													}
 												}
