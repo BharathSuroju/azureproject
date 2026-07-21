@@ -197,7 +197,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "select * from @{pipeline().parameters.schema}.@{pipeline().parameters.tablename} where @{pipeline().parameters.cdccolumn} > '@{if(empty(pipeline().parameters.from_date),activity('Lookup_Last_CDC').output.value[0].CDC , pipeline().parameters.from_date)}'",
+										"value": "select * from @{item().schema}.@{item().tablename} where @{item().cdccolumn} > '@{if(empty(item().from_date),activity('Lookup_Last_CDC').output.value[0].CDC , item().from_date)}'",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -235,11 +235,11 @@
 									"parameters": {
 										"container": "bronze",
 										"folder": {
-											"value": "@pipeline().parameters.tablename",
+											"value": "@item().tablename",
 											"type": "Expression"
 										},
 										"file": {
-											"value": "@concat(pipeline().parameters.tablename,'_',variables('current'))",
+											"value": "@concat(item().tablename,'_',variables('current'))",
 											"type": "Expression"
 										}
 									}
