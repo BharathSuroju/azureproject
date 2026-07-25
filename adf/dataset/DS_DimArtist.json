@@ -12,5 +12,6 @@
 			"schema": "dbo",
 			"table": "DimArtist"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
